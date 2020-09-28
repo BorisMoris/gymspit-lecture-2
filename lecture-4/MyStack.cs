@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 // https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.stack-1?view=netcore-3.1
 
 
@@ -54,5 +55,55 @@ namespace Lecture4
 		{
 			return !(count > 0);
 		}
+
+        //new methods:
+        
+        public void Clear()
+        {
+            Array.Clear(items, 0, count);
+            count = 0;
+        }
+
+        public int Count()
+        {
+            return count;
+        }
+
+        public bool Contains(T searchedItem)
+        {
+            
+            for(int i = 0; i<count;i++) {
+                if(Equals(searchedItem, items[i]))
+                {
+                    return true;
+                }
+            }            
+            return false;            
+        }
+
+
+        
+        public void ReverseOrder()
+        {
+            ArrayReverse(0, count - 1);
+        }
+        
+
+        //Tried implementing my own method instead of using Array.Reverse
+
+        public void ArrayReverse(int firstIndex, int lastIndex)
+        {
+            if (firstIndex >= lastIndex)
+            {
+                return;
+            }
+            
+            T temp = items[firstIndex];
+            items[firstIndex] = items[lastIndex];
+            items[lastIndex] = temp;
+            firstIndex++;
+            lastIndex--;
+            ArrayReverse(firstIndex, lastIndex);
+        }
 	}
 }

@@ -64,7 +64,29 @@ namespace Lecture4
 				Console.WriteLine(stack.Pop());
 			}
 
-			Console.ReadKey();
+            //new stack methods showcase:
+
+            MyStack<int> intStack = new MyStack<int>();
+            intStack.Push(32);
+            intStack.Push(85);
+            intStack.Push(58);
+            Console.WriteLine(intStack.Contains(58));
+            while (!intStack.IsEmpty())
+            {
+                Console.WriteLine(intStack.Pop());
+            }
+
+            intStack.Push(32);
+            intStack.Push(85);
+            intStack.Push(58);
+            intStack.ReverseOrder();
+            while (!intStack.IsEmpty())
+            {
+                Console.WriteLine(intStack.Pop());
+            }
+
+
+            Console.ReadKey();
 		}
 	}
 }
